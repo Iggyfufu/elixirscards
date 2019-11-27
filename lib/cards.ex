@@ -38,7 +38,15 @@ defmodule Cards do
   end
 
   @doc """
-    Checks if card is within the deck
+    Determines whether a deck contains a given card
+
+  ## Example
+
+    iex> deck = Cards.create_deck
+    iex> Cards.contains?(deck, "Ace of Spades")
+    true
+    iex> Cards.contains?(deck, "Mystery Card")
+    false
   """
   def contains?(deck, card) do
     Enum.member?(deck, card)
@@ -46,6 +54,13 @@ defmodule Cards do
 
   @doc """
     Divides a deck into a hand and the remainder of the deck. The `hand_size` argument indicates how many cards should be in the hand.
+
+  ## Examples
+
+    iex> deck = Cards.create_deck
+    iex> {hand, _deck} = Cards.deal(deck, 1)
+    iex> hand
+    ["Ace of Spades"]
   """
   def deal(deck, number) do
     Enum.split(deck, number)
